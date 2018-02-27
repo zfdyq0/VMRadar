@@ -2,6 +2,8 @@
 
 https://github.com/SamuelNZ/VMRadar/releases
 
+![Imgur](https://i.imgur.com/tMjF1xw.png)
+
 This version runs without the spoofing shit in a VM.
 
 'Fixed' the item locations, still working on it.

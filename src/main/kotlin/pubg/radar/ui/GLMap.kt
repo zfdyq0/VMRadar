@@ -12,6 +12,7 @@ import com.badlogic.gdx.Input.Keys.NUMPAD_6
 import com.badlogic.gdx.Input.Keys.NUMPAD_7
 import com.badlogic.gdx.Input.Keys.NUMPAD_8
 import com.badlogic.gdx.Input.Keys.NUMPAD_9
+import com.badlogic.gdx.Input.Keys.NUMPAD_0
 import com.badlogic.gdx.InputAdapter
 import com.badlogic.gdx.audio.Sound
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application
@@ -142,6 +143,8 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
     private lateinit var hubFontShadow: BitmapFont
     private lateinit var espFont: BitmapFont
     private lateinit var espFontShadow: BitmapFont
+    private lateinit var compaseFont: BitmapFont
+    private lateinit var compaseFontShadow: BitmapFont
 
 
     private val tileZooms = listOf("256", "512", "1024", "2048"/*, "4096"*/)
@@ -161,6 +164,7 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
     private var filterScope = -1
     private var filterHeals = -1
     private var filterAmmo = -1
+    private var drawcompass = -1
     private var scopesToFilter = arrayListOf("")
     private var weaponsToFilter = arrayListOf("")
     private var attachToFilter = arrayListOf("")
@@ -200,11 +204,6 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
             }
         }
 
-
-
-
-
-
         return true
     }
 
@@ -233,7 +232,9 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
     }
 
     override fun keyDown(keycode: Int): Boolean {
+
         when (keycode) {
+            NUMPAD_0 -> drawcompass = drawcompass * -1
             NUMPAD_1 -> filterWeapon = filterWeapon * -1
             NUMPAD_2 -> filterAttach = filterAttach * -1
             NUMPAD_3 -> filterLvl2 = filterLvl2 * -1
@@ -343,6 +344,12 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
         param.color = WHITE
         param.size = 6
         itemFont = generator.generateFont(param)
+        val compaseColor = Color(0f, 0.95f, 1f, 1f)  //Turquoise1
+        param.color = compaseColor
+        param.size = 14
+        compaseFont = generator.generateFont(param)
+        param.color = Color(0f, 0f, 0f, 0.5f)
+        compaseFontShadow = generator.generateFont(param)
         generatorHub.dispose()
         generatorNumber.dispose()
         generator.dispose()
@@ -469,6 +476,34 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
             else
                 espFontShadow.draw(spriteBatch, "AMMO", 150f, windowHeight - 42f)
 
+            if (drawcompass != 1){}else{
+            (-1..1).forEach { i ->
+                (-1..1).forEach { j ->
+                    compaseFontShadow.draw(spriteBatch, "0", windowWidth / 2 + i, windowHeight / 2 + 200 + j)        // N
+                    compaseFont.draw(spriteBatch, "0", windowWidth / 2, windowHeight / 2 + 200)        // N
+
+                    compaseFontShadow.draw(spriteBatch, "45", windowWidth / 2 + 200 + i, windowHeight / 2 + 200 + j)  // NE
+                    compaseFont.draw(spriteBatch, "45", windowWidth / 2 + 200, windowHeight / 2 + 200)  // NE
+
+                    compaseFontShadow.draw(spriteBatch, "90", windowWidth / 2 + 200 + i, windowHeight / 2 + j)        // E
+                    compaseFont.draw(spriteBatch, "90", windowWidth / 2 + 200, windowHeight / 2)        // E
+                    compaseFont
+                    compaseFontShadow.draw(spriteBatch, "135", windowWidth / 2 + 200 + i, windowHeight / 2 - 200 + j)  // SE
+                    compaseFont.draw(spriteBatch, "135", windowWidth / 2 + 200, windowHeight / 2 - 200)  // SE
+
+                    compaseFontShadow.draw(spriteBatch, "180", windowWidth / 2 + i, windowHeight / 2 - 200 + j)        // S
+                    compaseFont.draw(spriteBatch, "180", windowWidth / 2, windowHeight / 2 - 200)        // S
+
+                    compaseFontShadow.draw(spriteBatch, "225", windowWidth / 2 - 200 + i, windowHeight / 2 - 200 + j)   // SW
+                    compaseFont.draw(spriteBatch, "225", windowWidth / 2 - 200, windowHeight / 2 - 200)  // SW
+
+                    compaseFontShadow.draw(spriteBatch, "270", windowWidth / 2 - 200 + i, windowHeight / 2 + j)        // W
+                    compaseFont.draw(spriteBatch, "270", windowWidth / 2 - 200, windowHeight / 2)        // W
+
+                    compaseFontShadow.draw(spriteBatch, "315", windowWidth / 2 - 200 + i, windowHeight / 2 + 200 + j)   // NW
+                    compaseFont.draw(spriteBatch, "315", windowWidth / 2 - 200, windowHeight / 2 + 200)  // NW
+                }
+            }}
 
             val time = (pinLocation.cpy().sub(selfX, selfY).len() / runSpeed).toInt()
             val (x, y) = pinLocation.mapToWindow()
@@ -518,7 +553,7 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
 
 
 
-        println("$ayyAmount")
+        //println("$ayyAmount")
         val iconScale = 2f / camera.zoom
         paint(itemCamera.combined) {
             droppedItemLocation.values.asSequence().filter { it.second.isNotEmpty() }

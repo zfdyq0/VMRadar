@@ -29,17 +29,17 @@ class Icons(sheet: Texture, size: Int) {
             "Sickle" to arrayOf(1, 2),
             "Machete" to arrayOf(2, 2),
             "Pan" to arrayOf(3, 2),
-            // 5 Ammo
-            "9" to arrayOf(1, 3),
-            "45" to arrayOf(2, 3),
-            "556" to arrayOf(3, 3),
-            "762" to arrayOf(4, 3),
-            "300" to arrayOf(5, 3),
-            // 4 Throwables
-            "Smoke" to arrayOf(0, 4),
-            "Flash" to arrayOf(1, 4),
-            "Molotov" to arrayOf(2, 4),
-            "Grenade" to arrayOf(3, 4),
+            // 3 Throwables
+            "Smoke" to arrayOf(0, 3),
+            "Flash" to arrayOf(1, 3),
+            "Molotov" to arrayOf(2, 3),
+            "Grenade" to arrayOf(3, 3),
+            // 4 Ammo
+            "9" to arrayOf(1, 4),
+            "45" to arrayOf(2, 4),
+            "556" to arrayOf(3, 4),
+            "762" to arrayOf(4, 4),
+            "300" to arrayOf(5, 4),
             // 5 Shotguns
             "S686" to arrayOf(0, 5),
             "SK12" to arrayOf(1, 5),

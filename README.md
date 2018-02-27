@@ -2,7 +2,7 @@
 
 https://github.com/SamuelNZ/VMRadar/releases
 
-![Imgur](https://i.imgur.com/tMjF1xw.png)
+![Imgur](https://i.imgur.com/o3fglEB.png)
 
 This version runs without the spoofing shit in a VM.
 
@@ -33,15 +33,15 @@ You can't filter meds and level 3 gear
 #### Zooms:
 >NUMPAD_7 -> Scouting
 
-![Imgur](https://i.imgur.com/laRIJq1.png)
+![Imgur](https://i.imgur.com/bRmO7nd.png)
 
 >NUMPAD_8 -> Scout/Loot
 
-![Imgur](https://i.imgur.com/sAXPkR2.png)
+![Imgur](https://i.imgur.com/o3fglEB.png)
 
 >NUMPAD_9 -> Looting
 
-![Imgur](https://i.imgur.com/wnB3b7d.png)
+![Imgur](https://i.imgur.com/6vtFMbs.png)
 
 ### Online Mode:
 

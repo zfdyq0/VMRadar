@@ -13,6 +13,8 @@ This version runs without the spoofing shit in a VM.
 You can't filter meds and level 3 gear
 
 #### Item Filter:
+>NUMPAD_0 -> Show / Hide Compass (Hidden By Default)
+
 >NUMPAD_1 -> Filter Weapon
 
 >NUMPAD_2 -> Filter Attachments
@@ -28,9 +30,15 @@ You can't filter meds and level 3 gear
 #### Zooms:
 >NUMPAD_7 -> Scouting
 
+![Imgur](https://i.imgur.com/laRIJq1.png)
+
 >NUMPAD_8 -> Scout/Loot
 
+![Imgur](https://i.imgur.com/sAXPkR2.png)
+
 >NUMPAD_9 -> Looting
+
+![Imgur](https://i.imgur.com/wnB3b7d.png)
 
 ### Online Mode:
 

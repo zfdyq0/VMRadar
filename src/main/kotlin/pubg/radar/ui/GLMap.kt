@@ -632,7 +632,7 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
                 val syFix = windowHeight - sy
                 val iconScale = 2f / camera.zoom
                 spriteBatch.draw(corpseboximage, sx - iconScale / 2, syFix + iconScale / 2, iconScale, -iconScale,
-                        0, 0, 32, 32,
+                        0, 0, 64, 64,
                         false, true)
             }
             //Draw Airdrop Icon
@@ -642,7 +642,7 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
                 val syFix = windowHeight - sy
                 val iconScale = 2f / camera.zoom
                 spriteBatch.draw(airdropimage, sx - iconScale / 2, syFix + iconScale / 2, iconScale, -iconScale,
-                        0, 0, 32, 32,
+                        0, 0, 64, 64,
                         false, true)
             }
         }

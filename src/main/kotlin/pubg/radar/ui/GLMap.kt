@@ -3,6 +3,8 @@ package pubg.radar.ui
 import com.badlogic.gdx.ApplicationListener
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input.Buttons.*
+import com.badlogic.gdx.Input.Keys.HOME
+import com.badlogic.gdx.Input.Keys.NUMPAD_0
 import com.badlogic.gdx.Input.Keys.NUMPAD_1
 import com.badlogic.gdx.Input.Keys.NUMPAD_2
 import com.badlogic.gdx.Input.Keys.NUMPAD_3
@@ -12,7 +14,6 @@ import com.badlogic.gdx.Input.Keys.NUMPAD_6
 import com.badlogic.gdx.Input.Keys.NUMPAD_7
 import com.badlogic.gdx.Input.Keys.NUMPAD_8
 import com.badlogic.gdx.Input.Keys.NUMPAD_9
-import com.badlogic.gdx.Input.Keys.NUMPAD_0
 import com.badlogic.gdx.InputAdapter
 import com.badlogic.gdx.audio.Sound
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application
@@ -164,6 +165,7 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
     private var filterScope = -1
     private var filterHeals = -1
     private var filterAmmo = -1
+    private var filterThrow = -1
     private var drawcompass = -1
     private var scopesToFilter = arrayListOf("")
     private var weaponsToFilter = arrayListOf("")
@@ -171,6 +173,7 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
     private var level2Filter = arrayListOf("")
     private var healsToFilter = arrayListOf("")
     private var ammoToFilter = arrayListOf("")
+    private var throwToFilter = arrayListOf("")
     private var dragging = false
     private var prevScreenX = -1f
     private var prevScreenY = -1f
@@ -227,6 +230,7 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
                 screenOffsetY = 0f
             }
 
+
         }
         return false
     }
@@ -234,7 +238,9 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
     override fun keyDown(keycode: Int): Boolean {
 
         when (keycode) {
-            NUMPAD_0 -> drawcompass = drawcompass * -1
+
+            HOME -> drawcompass = drawcompass * -1
+            NUMPAD_0 -> filterThrow = filterThrow * -1
             NUMPAD_1 -> filterWeapon = filterWeapon * -1
             NUMPAD_2 -> filterAttach = filterAttach * -1
             NUMPAD_3 -> filterLvl2 = filterLvl2 * -1
@@ -467,43 +473,53 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
                 espFontShadow.draw(spriteBatch, "SCOPE", 98f, windowHeight - 42f)
 
             if (filterHeals != 1)
-                espFont.draw(spriteBatch, "HEALS", 150f, windowHeight - 25f)
+                espFont.draw(spriteBatch, "MEDS", 150f, windowHeight - 25f)
             else
-                espFontShadow.draw(spriteBatch, "HEALS", 150f, windowHeight - 25f)
+                espFontShadow.draw(spriteBatch, "MEDS", 150f, windowHeight - 25f)
 
             if (filterAmmo != 1)
                 espFont.draw(spriteBatch, "AMMO", 150f, windowHeight - 42f)
             else
                 espFontShadow.draw(spriteBatch, "AMMO", 150f, windowHeight - 42f)
+            if (drawcompass == 1)
+                espFont.draw(spriteBatch, "COMPASS", 200f, windowHeight - 42f)
+            else
+                espFontShadow.draw(spriteBatch, "COMPASS", 200f, windowHeight - 42f)
+            if (filterThrow != 1)
+                espFont.draw(spriteBatch, "THROW", 200f, windowHeight - 25f)
+            else
+                espFontShadow.draw(spriteBatch, "THROW", 200f, windowHeight - 25f)
 
-            if (drawcompass != 1){}else{
-            (-1..1).forEach { i ->
-                (-1..1).forEach { j ->
-                    compaseFontShadow.draw(spriteBatch, "0", windowWidth / 2 + i, windowHeight / 2 + 200 + j)        // N
-                    compaseFont.draw(spriteBatch, "0", windowWidth / 2, windowHeight / 2 + 200)        // N
+            if (drawcompass != 1) {
+            } else {
+                (-1..1).forEach { i ->
+                    (-1..1).forEach { j ->
+                        compaseFontShadow.draw(spriteBatch, "0", windowWidth / 2 + i, windowHeight / 2 + 200 + j)        // N
+                        compaseFont.draw(spriteBatch, "0", windowWidth / 2, windowHeight / 2 + 200)        // N
 
-                    compaseFontShadow.draw(spriteBatch, "45", windowWidth / 2 + 200 + i, windowHeight / 2 + 200 + j)  // NE
-                    compaseFont.draw(spriteBatch, "45", windowWidth / 2 + 200, windowHeight / 2 + 200)  // NE
+                        compaseFontShadow.draw(spriteBatch, "45", windowWidth / 2 + 200 + i, windowHeight / 2 + 200 + j)  // NE
+                        compaseFont.draw(spriteBatch, "45", windowWidth / 2 + 200, windowHeight / 2 + 200)  // NE
 
-                    compaseFontShadow.draw(spriteBatch, "90", windowWidth / 2 + 200 + i, windowHeight / 2 + j)        // E
-                    compaseFont.draw(spriteBatch, "90", windowWidth / 2 + 200, windowHeight / 2)        // E
-                    compaseFont
-                    compaseFontShadow.draw(spriteBatch, "135", windowWidth / 2 + 200 + i, windowHeight / 2 - 200 + j)  // SE
-                    compaseFont.draw(spriteBatch, "135", windowWidth / 2 + 200, windowHeight / 2 - 200)  // SE
+                        compaseFontShadow.draw(spriteBatch, "90", windowWidth / 2 + 200 + i, windowHeight / 2 + j)        // E
+                        compaseFont.draw(spriteBatch, "90", windowWidth / 2 + 200, windowHeight / 2)        // E
+                        compaseFont
+                        compaseFontShadow.draw(spriteBatch, "135", windowWidth / 2 + 200 + i, windowHeight / 2 - 200 + j)  // SE
+                        compaseFont.draw(spriteBatch, "135", windowWidth / 2 + 200, windowHeight / 2 - 200)  // SE
 
-                    compaseFontShadow.draw(spriteBatch, "180", windowWidth / 2 + i, windowHeight / 2 - 200 + j)        // S
-                    compaseFont.draw(spriteBatch, "180", windowWidth / 2, windowHeight / 2 - 200)        // S
+                        compaseFontShadow.draw(spriteBatch, "180", windowWidth / 2 + i, windowHeight / 2 - 200 + j)        // S
+                        compaseFont.draw(spriteBatch, "180", windowWidth / 2, windowHeight / 2 - 200)        // S
 
-                    compaseFontShadow.draw(spriteBatch, "225", windowWidth / 2 - 200 + i, windowHeight / 2 - 200 + j)   // SW
-                    compaseFont.draw(spriteBatch, "225", windowWidth / 2 - 200, windowHeight / 2 - 200)  // SW
+                        compaseFontShadow.draw(spriteBatch, "225", windowWidth / 2 - 200 + i, windowHeight / 2 - 200 + j)   // SW
+                        compaseFont.draw(spriteBatch, "225", windowWidth / 2 - 200, windowHeight / 2 - 200)  // SW
 
-                    compaseFontShadow.draw(spriteBatch, "270", windowWidth / 2 - 200 + i, windowHeight / 2 + j)        // W
-                    compaseFont.draw(spriteBatch, "270", windowWidth / 2 - 200, windowHeight / 2)        // W
+                        compaseFontShadow.draw(spriteBatch, "270", windowWidth / 2 - 200 + i, windowHeight / 2 + j)        // W
+                        compaseFont.draw(spriteBatch, "270", windowWidth / 2 - 200, windowHeight / 2)        // W
 
-                    compaseFontShadow.draw(spriteBatch, "315", windowWidth / 2 - 200 + i, windowHeight / 2 + 200 + j)   // NW
-                    compaseFont.draw(spriteBatch, "315", windowWidth / 2 - 200, windowHeight / 2 + 200)  // NW
+                        compaseFontShadow.draw(spriteBatch, "315", windowWidth / 2 - 200 + i, windowHeight / 2 + 200 + j)   // NW
+                        compaseFont.draw(spriteBatch, "315", windowWidth / 2 - 200, windowHeight / 2 + 200)  // NW
+                    }
                 }
-            }}
+            }
 
             val time = (pinLocation.cpy().sub(selfX, selfY).len() / runSpeed).toInt()
             val (x, y) = pinLocation.mapToWindow()
@@ -530,7 +546,7 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
         weaponsToFilter = if (filterWeapon != 1) {
             arrayListOf("")
         } else {
-            arrayListOf("M16","M4", "98k", "Scar", "Ak", "Sks", "Grenade", "Mini", "DP28", "Ump", "Vector", "Pan")
+            arrayListOf("M16", "M4", "98k", "Scar", "Ak", "Sks", "Mini", "DP28", "Ump", "Vector", "Pan")
         }
 
         healsToFilter = if (filterHeals != 1) {
@@ -542,15 +558,22 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
         ammoToFilter = if (filterAmmo != 1) {
             arrayListOf("")
         } else {
-            arrayListOf("556", "762", "Grenade", "Molotov", "Smoke", "Flash")
+            arrayListOf("9", "45", "556", "762", "300")
         }
+
+        throwToFilter = if (filterThrow != 1) {
+            arrayListOf("")
+        } else {
+            arrayListOf("Grenade", "Molotov", "Smoke", "Flash")
+        }
+
+
 
         level2Filter = if (filterLvl2 != 1) {
             arrayListOf("")
         } else {
             arrayListOf("Bag2", "Arm2", "Helm2")
         }
-
 
 
         //println("$ayyAmount")
@@ -565,47 +588,49 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
                         val syFix = windowHeight - sy - ayyAmount
                         // println(items)
                         items.forEach {
-                                         if (it !in weaponsToFilter) {
+                            if (it !in weaponsToFilter) {
 
-                                             if (it !in scopesToFilter) {
+                                if (it !in scopesToFilter) {
 
-                                                 if (it !in attachToFilter) {
+                                    if (it !in attachToFilter) {
 
-                                                     if (it !in level2Filter) {
+                                        if (it !in level2Filter) {
 
-                                                         if (it !in ammoToFilter) {
+                                            if (it !in ammoToFilter) {
 
-                                                             if (it !in healsToFilter) {
+                                                if (it !in healsToFilter) {
 
-                                                             if (
-                                                                     iconScale > 20 &&
-                                                                     sx > 0 && sx < windowWidth &&
-                                                                     syFix > 0 && syFix < windowHeight
-                                                             ) {
-                                                                 iconImages.setIcon(it)
-                                                                 draw(
-                                                                         iconImages.icon,
-                                                                         sx - iconScale / 2,
-                                                                         syFix + iconScale / 2,
-                                                                         iconScale,
-                                                                         iconScale
-                                                                 )
-                                                             }}
-                                                         }
-                                                     }
-                                                 }
-                                             }
-                                         }
+                                                    if (it !in throwToFilter) {
+
+                                                        if (
+                                                                iconScale > 20 &&
+                                                                sx > 0 && sx < windowWidth &&
+                                                                syFix > 0 && syFix < windowHeight
+                                                        ) {
+                                                            iconImages.setIcon(it)
+                                                            draw(
+                                                                    iconImages.icon,
+                                                                    sx - iconScale / 2,
+                                                                    syFix + iconScale / 2,
+                                                                    iconScale,
+                                                                    iconScale
+                                                            )
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
             //Draw Corpse Icon
             corpseLocation.values.forEach {
-                //droppedItemLocation
                 val (x, y) = it
                 val (sx, sy) = Vector2(x + 16, y - 16).mapToWindow()
                 val syFix = windowHeight - sy
                 val iconScale = 2f / camera.zoom
-
                 spriteBatch.draw(corpseboximage, sx - iconScale / 2, syFix + iconScale / 2, iconScale, -iconScale,
                         0, 0, 32, 32,
                         false, true)
@@ -615,7 +640,10 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
                 val (x, y) = it
                 val (sx, sy) = Vector2(x, y).mapToWindow()
                 val syFix = windowHeight - sy
-                spriteBatch.draw(airdropimage, sx - 16, syFix - 16)
+                val iconScale = 2f / camera.zoom
+                spriteBatch.draw(airdropimage, sx - iconScale / 2, syFix + iconScale / 2, iconScale, -iconScale,
+                        0, 0, 32, 32,
+                        false, true)
             }
         }
 

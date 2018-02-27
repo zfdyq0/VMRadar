@@ -1,6 +1,7 @@
 package pubg.radar.util
 
-import pubg.radar.*
+import pubg.radar.GameListener
+import pubg.radar.register
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.concurrent.thread
@@ -61,7 +62,7 @@ class PlayerProfile {
                     }
                 }
         }
-        }
+    }
 
     private fun ee(c: Int, a: Int = base): String {
         val first = if (c < a) ""

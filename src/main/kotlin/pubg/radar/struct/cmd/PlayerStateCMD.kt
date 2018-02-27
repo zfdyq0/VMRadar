@@ -2,7 +2,6 @@ package pubg.radar.struct.cmd
 
 import pubg.radar.GameListener
 import pubg.radar.deserializer.ROLE_MAX
-import pubg.radar.util.PlayerProfile.Companion.query
 import pubg.radar.register
 import pubg.radar.struct.Actor
 import pubg.radar.struct.Bunch
@@ -14,6 +13,7 @@ import pubg.radar.struct.cmd.CMD.propertyInt
 import pubg.radar.struct.cmd.CMD.propertyNetId
 import pubg.radar.struct.cmd.CMD.propertyObject
 import pubg.radar.struct.cmd.CMD.propertyString
+import pubg.radar.util.PlayerProfile.Companion.query
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentLinkedQueue
 

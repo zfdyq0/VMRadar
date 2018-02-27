@@ -29,6 +29,7 @@ class Icons(sheet: Texture, size: Int) {
             "Sickle" to arrayOf(1, 2),
             "Machete" to arrayOf(2, 2),
             "Pan" to arrayOf(3, 2),
+            "Crossbow" to arrayOf(7, 2),
             // 3 Throwables
             "Smoke" to arrayOf(0, 3),
             "Flash" to arrayOf(1, 3),
@@ -47,6 +48,10 @@ class Icons(sheet: Texture, size: Int) {
             "Sawed-off" to arrayOf(3, 5),
             // 6 Pistols
             "R45" to arrayOf(4, 6),
+            "R1895" to arrayOf(0, 6),
+            "P92" to arrayOf(1, 6),
+            "P1911" to arrayOf(2, 6),
+            "P18C" to arrayOf(3, 6),
             // 7 MGs
             "Uzi" to arrayOf(0, 7),
             "Ump" to arrayOf(1, 7),

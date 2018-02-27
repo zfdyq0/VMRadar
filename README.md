@@ -13,7 +13,10 @@ This version runs without the spoofing shit in a VM.
 You can't filter meds and level 3 gear
 
 #### Item Filter:
->NUMPAD_0 -> Show / Hide Compass (Hidden By Default)
+
+>HOME -> Show / Hide Compass
+
+>NUMPAD_0 -> Filter Throwables
 
 >NUMPAD_1 -> Filter Weapon
 

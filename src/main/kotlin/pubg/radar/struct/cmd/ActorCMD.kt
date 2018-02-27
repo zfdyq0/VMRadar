@@ -13,13 +13,9 @@ import pubg.radar.struct.Bunch
 import pubg.radar.struct.NetGUIDCache.Companion.guidCache
 import pubg.radar.struct.NetworkGUID
 import pubg.radar.struct.cmd.CMD.propertyBool
-import pubg.radar.struct.cmd.CMD.propertyByte
-import pubg.radar.struct.cmd.CMD.propertyFloat
-import pubg.radar.struct.cmd.CMD.propertyInt
 import pubg.radar.struct.cmd.CMD.propertyName
 import pubg.radar.struct.cmd.CMD.propertyObject
 import pubg.radar.struct.cmd.CMD.propertyRotator
-import pubg.radar.struct.cmd.CMD.propertyVector
 import pubg.radar.struct.cmd.CMD.propertyVector100
 import pubg.radar.struct.cmd.CMD.repMovement
 import java.util.concurrent.ConcurrentHashMap
@@ -118,19 +114,19 @@ object ActorCMD : GameListener {
                         playerStateToActor[playerStateGUID] = actor.netGUID
                     }
                 }
-        17 -> {//RemoteViewPitch 2
-          readUInt16()
-        }
+                17 -> {//RemoteViewPitch 2
+                    readUInt16()
+                }
 //        18 -> propertyObject()
 //        19 -> propertyObject()
 //        20 -> propertyName()
-        21 -> {
-            val locationOffset = propertyVector100()
-            if (actor.Type == DroopedItemGroup) {
-                bugln { "${actor.location} locationOffset $locationOffset" }
-            }
-            bugln { ",attachLocation $actor ----------> $locationOffset" }
-        }
+                21 -> {
+                    val locationOffset = propertyVector100()
+                    if (actor.Type == DroopedItemGroup) {
+                        bugln { "${actor.location} locationOffset $locationOffset" }
+                    }
+                    bugln { ",attachLocation $actor ----------> $locationOffset" }
+                }
 //        22 -> propertyRotator()
 //        23 -> propertyBool()
 //        24 -> propertyBool()
@@ -144,41 +140,41 @@ object ActorCMD : GameListener {
 //        32 -> propertyBool()
 //        33 -> propertyObject()
 //        34 -> propertyFloat()
-        35 -> {
-            val locationOffset = propertyVector100()
-            if (actor.Type == DroopedItemGroup) {
-                bugln { "${actor.location} locationOffset $locationOffset" }
-            }
-            bugln { ",attachLocation $actor ----------> $locationOffset" }
-        }
+                35 -> {
+                    val locationOffset = propertyVector100()
+                    if (actor.Type == DroopedItemGroup) {
+                        bugln { "${actor.location} locationOffset $locationOffset" }
+                    }
+                    bugln { ",attachLocation $actor ----------> $locationOffset" }
+                }
 //        36 -> propertyRotator()
 //        37 -> propertyObject()
 //        38 -> propertyName()
 //        39 -> propertyBool()
 //        40 -> propertyBool()
-        41 -> {//player
-         // println("41")
-          return false
-        val sourcesNum = readUInt8()
-         val bHasAdditiveSources = readBit()
-         val bHasOverrideSources = readBit()
-        //  val lastPreAdditiveVelocity = propertyVector10()
-          val bIsAdditiveVelocityApplied = readBit()
-          val flags = readUInt8()
-          for (i in 0 until sourcesNum) {
-          }
-       }
-       // 42 -> propertyVector10()
-      //  43 -> propertyVector10()
-        44 -> {
-         // println("44")
-         return false
-          val arrayNum = readUInt16()
-        for (i in 0 until arrayNum) {
-           val handle = readIntPacked()
-         ActorCMD.process(actor, bunch, handle)
-          }
-       }
+                41 -> {//player
+                    // println("41")
+                    return false
+                    val sourcesNum = readUInt8()
+                    val bHasAdditiveSources = readBit()
+                    val bHasOverrideSources = readBit()
+                    //  val lastPreAdditiveVelocity = propertyVector10()
+                    val bIsAdditiveVelocityApplied = readBit()
+                    val flags = readUInt8()
+                    for (i in 0 until sourcesNum) {
+                    }
+                }
+            // 42 -> propertyVector10()
+            //  43 -> propertyVector10()
+                44 -> {
+                    // println("44")
+                    return false
+                    val arrayNum = readUInt16()
+                    for (i in 0 until arrayNum) {
+                        val handle = readIntPacked()
+                        ActorCMD.process(actor, bunch, handle)
+                    }
+                }
 
                 else -> return false
             }

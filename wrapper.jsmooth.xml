@@ -7,13 +7,13 @@
 <JVMSearchPath>exepath</JVMSearchPath>
 <JVMSearchPath>jview</JVMSearchPath>
 <arguments></arguments>
-<bundledJVMPath>..\..\..\..\..\Program Files\Java\jre1.8.0_161</bundledJVMPath>
+<bundledJVMPath>..\..\..\Program Files\Java\jre1.8.0_161</bundledJVMPath>
 <currentDirectory>${EXECUTABLEPATH}</currentDirectory>
 <embeddedJar>true</embeddedJar>
 <executableName>RadarVM.exe</executableName>
 <iconLocation>icon.ico</iconLocation>
 <initialMemoryHeap>1073741824</initialMemoryHeap>
-<jarLocation>..\..\..\KK\VMRadar\target\pubg-radar-1.0-SNAPSHOT-jar-with-dependencies.jar</jarLocation>
+<jarLocation>PATH TO JAR\pubg-radar-1.0-SNAPSHOT-jar-with-dependencies.jar</jarLocation>
 <mainClassName>pubg.radar.GameKt</mainClassName>
 <maximumMemoryHeap>2146435072</maximumMemoryHeap>
 <maximumVersion>1.8</maximumVersion>

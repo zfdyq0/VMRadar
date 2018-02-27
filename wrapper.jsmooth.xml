@@ -7,7 +7,7 @@
 <JVMSearchPath>exepath</JVMSearchPath>
 <JVMSearchPath>jview</JVMSearchPath>
 <arguments></arguments>
-<bundledJVMPath>..\..\..\Program Files\Java\jre1.8.0_161</bundledJVMPath>
+<bundledJVMPath>PATH TO JRE 8\Program Files\Java\jre1.8.0_161</bundledJVMPath>
 <currentDirectory>${EXECUTABLEPATH}</currentDirectory>
 <embeddedJar>true</embeddedJar>
 <executableName>RadarVM.exe</executableName>

@@ -28,7 +28,7 @@ You can't filter meds and level 3 gear
 
 >NUMPAD_5 -> Filter Meds
 
->NUMPAD_6 -> Filter Ammo (Includes Grenades)
+>NUMPAD_6 -> Filter Ammo
 
 #### Zooms:
 >NUMPAD_7 -> Scouting

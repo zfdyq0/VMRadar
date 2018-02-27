@@ -5,6 +5,7 @@ https://github.com/SamuelNZ/VMRadar/releases
 ![Imgur](https://i.imgur.com/8MfCXi2.gif)
 
 This version runs without the spoofing shit in a VM.
+
 'Fixed' the item locations, still working on it.
 
 ### Key Kinds
@@ -30,14 +31,21 @@ You can't filter level 3 gear (always enabled)
 
 ### Offline Mode:
 You can replay a PCAP file in offline mode:
+
 `java -jar target\pubg-radar-1.0-SNAPSHOT-jar-with-dependencies.jar "Middle PC IP" PortFilter "Game PC IP" Offline`
 
 ## Build
 Using [maven](https://maven.apache.org/) or [JetBrains](https://www.jetbrains.com/idea/)
 
-## Run
-Using a VM that supports OpenGL3.2 or on another machine, You shouldn't be using this on your gaming PC.
-You need to install JRE8 not JRE9.
+## Install and Run
+
+1. Install VMWare Workstation
+2. Setup your VM in Bridged Mode, replicate physical.
+3. Install [JDK8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) on your VM.
+4. Install [Wireshark + WinPCap](https://www.wireshark.org/) on your VM
+5. Change your IP addresses in the batch file
+6. Run as admin and disable full screen optimizations in the Compatibility tab in the Properties.
+7. Run the batch file.
 
 
 

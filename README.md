@@ -1,5 +1,7 @@
 # PUBG-Radar
 
+https://github.com/SamuelNZ/VMRadar/releases
+
 This version runs without the spoofing shit in a VM.
 
 'Fixed' the item locations, still working on it.

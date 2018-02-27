@@ -1,4 +1,4 @@
-# PUBG-Radar
+# PUBG-Radar ![Imgur](https://i.imgur.com/n3JtN5d.png)
 
 https://github.com/SamuelNZ/VMRadar/releases
 

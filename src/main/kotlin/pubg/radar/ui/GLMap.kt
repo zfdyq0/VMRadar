@@ -518,7 +518,7 @@ class GLMap : InputAdapter(), ApplicationListener, GameListener {
 
 
 
-        //println("$ayyAmount")
+        println("$ayyAmount")
         val iconScale = 2f / camera.zoom
         paint(itemCamera.combined) {
             droppedItemLocation.values.asSequence().filter { it.second.isNotEmpty() }
